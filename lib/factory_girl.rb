@@ -60,11 +60,22 @@ module FactoryGirl
   end
 
   class << self
-    delegate :factories, :sequences, :traits, :callbacks, :strategies,
-             :callback_names, :use_parent_strategy, :to_create, :skip_create,
-             :initialize_with, :constructor,
+    delegate :factories,
+             :sequences,
+             :traits,
+             :callbacks,
+             :strategies,
+             :callback_names,
+             :to_create,
+             :skip_create,
+             :initialize_with,
+             :constructor,
              :duplicate_attribute_assignment_from_initialize_with,
              :duplicate_attribute_assignment_from_initialize_with=,
+             :allow_class_lookup,
+             :allow_class_lookup=,
+             :use_parent_strategy,
+             :use_parent_strategy=,
              to: :configuration
   end
 

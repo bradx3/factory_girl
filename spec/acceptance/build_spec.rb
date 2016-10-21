@@ -23,9 +23,22 @@ describe "a built instance" do
 
   it { should be_new_record }
 
-  it "assigns and saves associations" do
-    expect(subject.user).to be_kind_of(User)
-    expect(subject.user).not_to be_new_record
+  context "when the :use_parent_strategy config option has not been set" do
+    before { FactoryGirl.use_parent_strategy = nil }
+
+    it "assigns and saves associations" do
+      expect(subject.user).to be_kind_of(User)
+      expect(subject.user).not_to be_new_record
+    end
+  end
+
+  context "when the :use_parent_strategy config option has been enabled" do
+    before { FactoryGirl.use_parent_strategy = true }
+
+    it "assigns but does not save associations" do
+      expect(subject.user).to be_kind_of(User)
+      expect(subject.user).to be_new_record
+    end
   end
 
   it "assigns but does not save associations when using parent strategy" do
